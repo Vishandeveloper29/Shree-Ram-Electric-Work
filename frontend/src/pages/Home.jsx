@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../style.css"
 function Home() {
   return (
     <> <header>
@@ -16,18 +16,18 @@ function Home() {
         <div className="hero-search-wrap">
             <div className="hero-search">
                 <input type="text" id="heroSearch" placeholder="Search by brand, HP, RPM, voltage, frame size..."
-                    oninput="applyFilters()" />
-                <button onClick="applyFilters()">🔍 Search</button>
+                     />
+                <button >🔍 Search</button>
             </div>
             <div className="hero-chips">
-                <span className="hero-chip active" onClick="setQuickFilter('all',this)">All Motors</span>
-                <span className="hero-chip" onClick="setQuickFilter('ac',this)">AC Motors</span>
-                <span className="hero-chip" onClick="setQuickFilter('dc',this)">DC Motors</span>
-                <span className="hero-chip" onClick="setQuickFilter('single',this)">Single Phase</span>
-                <span className="hero-chip" onClick="setQuickFilter('three',this)">Three Phase</span>
-                <span className="hero-chip" onClick="setQuickFilter('rewound',this)">Rewound</span>
-                <span className="hero-chip" onClick="setQuickFilter('highRPM',this)">High RPM (3000+)</span>
-                <span className="hero-chip" onClick="setQuickFilter('highHP',this)">High HP (5+)</span>
+                <span className="hero-chip active" >All Motors</span>
+                <span className="hero-chip" >AC Motors</span>
+                <span className="hero-chip" >DC Motors</span>
+                <span className="hero-chip" >Single Phase</span>
+                <span className="hero-chip" >Three Phase</span>
+                <span className="hero-chip" >Rewound</span>
+                <span className="hero-chip" >High RPM (3000+)</span>
+                <span className="hero-chip" >High HP (5+)</span>
             </div>
         </div>
     </div>
@@ -35,12 +35,12 @@ function Home() {
     <div className="stats-bar" id="statsBar"></div>
 
     <div className="main-wrap">
-        <div className="sidebar-overlay" id="sbOverlay" onClick="closeSidebar()"></div>
+        <div className="sidebar-overlay" id="sbOverlay"></div>
 
         <div className="sidebar" id="sidebar">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-                <strong style="font-size:.92rem;color:var(--navy)">⚙️ Filters</strong>
-                <button className="clear-btn" style="width:auto;padding:5px 12px" onClick="clearAllFilters()">Clear
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"14px"}}>
+                <strong style={{fontSize:".92rem;color:var(--navy)"}}>⚙️ Filters</strong>
+                <button className="clear-btn" style={{width:"auto",padding:"5px 12px"}}>Clear
                     All</button>
             </div>
             <div className="sb-section">
@@ -59,9 +59,9 @@ function Home() {
                 <div className="sb-title">HP Range</div>
                 <div className="sb-range">
                     <div className="sb-range-row">
-                        <input type="number" id="hpMin" placeholder="Min" oninput="applyFilters()" />
+                        <input type="number" id="hpMin" placeholder="Min"  />
                         <span>—</span>
-                        <input type="number" id="hpMax" placeholder="Max" oninput="applyFilters()" />
+                        <input type="number" id="hpMax" placeholder="Max"  />
                     </div>
                 </div>
             </div>
@@ -69,15 +69,15 @@ function Home() {
                 <div className="sb-title">RPM Range</div>
                 <div className="sb-range">
                     <div className="sb-range-row">
-                        <input type="number" id="rpmMin" placeholder="Min" oninput="applyFilters()" />
+                        <input type="number" id="rpmMin" placeholder="Min"  />
                         <span>—</span>
-                        <input type="number" id="rpmMax" placeholder="Max" oninput="applyFilters()" />
+                        <input type="number" id="rpmMax" placeholder="Max" />
                     </div>
                 </div>
             </div>
             <div className="sb-section">
                 <div className="sb-title">IP Rating</div>
-                <select className="sb-select" id="ipFilter" onchange="applyFilters()">
+                <select className="sb-select" id="ipFilter">
                     <option value="">All</option>
                     <option>IP44</option>
                     <option>IP54</option>
@@ -88,7 +88,7 @@ function Home() {
             </div>
             <div className="sb-section">
                 <div className="sb-title">Insulation className</div>
-                <select className="sb-select" id="insulFilter" onchange="applyFilters()">
+                <select className="sb-select" id="insulFilter" >
                     <option value="">All</option>
                     <option>A</option>
                     <option>B</option>
@@ -101,7 +101,7 @@ function Home() {
         <div className="content">
             <div className="content-header">
                 <div className="result-info" id="resultInfo">All Motors <small></small></div>
-                <select className="sort-select" id="sortSel" onchange="applyFilters()">
+                <select className="sort-select" id="sortSel" >
                     <option value="brand">Sort: Brand</option>
                     <option value="ratedPowerHP">Sort: HP</option>
                     <option value="ratedRPM">Sort: RPM</option>
@@ -114,18 +114,18 @@ function Home() {
         </div>
     </div>
 
-    <button className="fab" onClick="openSidebar()">⚙️ Filters</button>
+    <button className="fab">⚙️ Filters</button>
 
-    <div className="modal-bg" id="detailModal" style="display:none" onClick="closeMOutside(event)">
+    <div className="modal-bg" id="detailModal" style={{display:"none"}}>
         <div className="modal">
             <div className="modal-header">
                 <h2 id="dTitle">Motor Details</h2>
-                <button className="modal-close" onClick="closeModal()">✕</button>
+                <button className="modal-close" >✕</button>
             </div>
             <div className="modal-body" id="dBody"></div>
             <div className="modal-footer">
-                <button onClick="closeModal()"
-                    style="padding:9px 22px;border:2px solid var(--border);border-radius:10px;background:var(--card);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer">Close</button>
+                <button
+                    style={{padding:"9px 22px",border:"2px solid var(--border)",borderRadius:"10px",background:"var(--card)",fontSize:".88rem",fontWeight:600,cursor:"pointer"}}>Close</button>
             </div>
         </div>
     </div></>

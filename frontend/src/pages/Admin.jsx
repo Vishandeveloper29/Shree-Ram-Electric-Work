@@ -1,34 +1,68 @@
 import React from 'react'
-
+import "../admin.css"
 function Admin() {
   return (
    <>
     {/* <!-- INSTALL BANNER --> */}
     <div id="installBanner"
-        style="display:none;background:linear-gradient(135deg,var(--orange),var(--orange2));padding:10px 20px;color:#fff;font-size:.86rem;font-weight:600;align-items:center;flex-wrap:wrap;gap:10px;z-index:9998;position:fixed;bottom:0;left:0;right:0">
+        style={{display:"none",background:"linear-gradient(135deg,var(--orange),var(--orange2))",padding:"10px 20px",color:"#fff",fontSize:".86rem",fontWeight:600,alignItems:"center",flexWrap:"wrap",gap:"10px",zIndex:9998,position:"fixed",bottom:0,left:0,right:0}}>
         📲 Install this app on your device for faster access & offline use!
-        <button onClick="installPWA()"
-            style="background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.5);color:#fff;padding:6px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer">Install
-            App</button>
-        <button onClick="dismissInstall()"
-            style="background:none;border:none;color:rgba(255,255,255,.8);cursor:pointer;font-size:1.2rem;margin-left:auto">✕</button>
+        <button 
+           style={{
+  background: "rgba(255,255,255,.25)",
+  border: "1px solid rgba(255,255,255,.5)",
+  color: "#fff",
+  padding: "6px 14px",
+  borderRadius: "8px",
+  fontFamily: "'DM Sans', sans-serif",
+  fontSize: ".84rem",
+  fontWeight: 700,
+  cursor: "pointer"
+}}>Install App</button>
+        <button 
+          style={{
+  background: "none",
+  border: "none",
+  color: "rgba(255,255,255,.8)",
+  cursor: "pointer",
+  fontSize: "1.2rem",
+  marginLeft: "auto"
+}}>✕</button>
     </div>
 
     {/* <!-- BACKUP BANNER --> */}
-    <div id="backupBanner" style="display:none" className="backup-banner">
+    <div id="backupBanner" style={{display:"none"}} className="backup-banner">
         ⚠️ <strong>Backup Reminder:</strong> You haven't backed up your data in over 24 hours.
-        <button onClick="exportJSON()"
-            style="background:var(--yellow);border:none;padding:5px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;color:#7a5f00">Download
+        <button 
+           style={{
+  background: "var(--yellow)",
+  border: "none",
+  padding: "5px 14px",
+  borderRadius: "8px",
+  fontFamily: "'DM Sans', sans-serif",
+  fontSize: ".82rem",
+  fontWeight: 700,
+  cursor: "pointer",
+  color: "#7a5f00"
+}}>Download
             Backup</button>
-        <button onClick="dismissBackup()"
-            style="background:none;border:none;color:#7a5f00;cursor:pointer;font-weight:700;font-size:1.1rem;margin-left:auto">✕</button>
+        <button 
+           style={{
+  background: "none",
+  border: "none",
+  color: "#7a5f00",
+  cursor: "pointer",
+  fontWeight: 700,
+  fontSize: "1.1rem",
+  marginLeft: "auto"
+}}>✕</button>
     </div>
 
     {/* <!-- APP --> */}
-    <div id="appWrap" className="app-wrap" style="display:none">
+    <div id="appWrap" className="app-wrap" style={{display:"none"}}>
 
         {/* <!-- SIDEBAR OVERLAY --> */}
-        <div id="sidebarOverlay" className="sidebar-overlay" onClick="closeAdminSidebar()" style="display:none"></div>
+        <div id="sidebarOverlay" className="sidebar-overlay" style={{display:"none"}}></div>
 
         {/* <!-- SIDEBAR --> */}
         <nav className="sidebar" id="adminSidebar">
@@ -37,42 +71,48 @@ function Admin() {
                     ⚡ SREW Admin
                     <span>Motor Data System</span>
                 </div>
-                <button className="sidebar-close-btn" onClick="closeAdminSidebar()" title="Close menu">✕</button>
+                <button className="sidebar-close-btn"  title="Close menu">✕</button>
             </div>
 
             <div className="sidebar-nav">
                 <div className="nav-section">Main</div>
                 <div className="nav-item active" id="nav-dashboard"
-                    onClick="showPage('dashboard',this);closeAdminSidebar()">
+                    >
                     <span className="ni-icon">📊</span> Dashboard
                 </div>
-                <div className="nav-item" id="nav-motors" onClick="showPage('motors',this);closeAdminSidebar()">
+                <div className="nav-item" id="nav-motors">
                     <span className="ni-icon">⚡</span> Motors
                 </div>
 
                 <div className="nav-section">Data</div>
-                <div className="nav-item" id="nav-export" onClick="showPage('export',this);closeAdminSidebar()">
+                <div className="nav-item" id="nav-export" >
                     <span className="ni-icon">💾</span> Backup & Export
                 </div>
-                <div className="nav-item" id="nav-import" onClick="showPage('import',this);closeAdminSidebar()">
+                <div className="nav-item" id="nav-import" >
                     <span className="ni-icon">📥</span> Import Data
                 </div>
 
                 <div className="nav-section">System</div>
-                <div className="nav-item" id="nav-settings" onClick="showPage('settings',this);closeAdminSidebar()">
+                <div className="nav-item" id="nav-settings" >
                     <span className="ni-icon">⚙️</span> Settings
                 </div>
-                <div className="nav-item" id="nav-help" onClick="showPage('help',this);closeAdminSidebar()">
+                <div className="nav-item" id="nav-help">
                     <span className="ni-icon">❓</span> Help & Guide
                 </div>
             </div>
 
             <div className="sidebar-footer">
-                <button id="sidebarInstallBtn" onClick="installPWA()" className="btn-install-side" style="display:none">
+                <button id="sidebarInstallBtn"  className="btn-install-side" style={{display:"none"}}>
                     📲 Install App
                 </button>
                 <div id="pwaInstalledMsg"
-                    style="display:none;text-align:center;font-size:.78rem;color:rgba(255,255,255,.5);padding:6px">✅ App
+                   style={{
+  display: "none",
+  textAlign: "center",
+  fontSize: ".78rem",
+  color: "rgba(255,255,255,.5)",
+  padding: "6px"
+}}>✅ App
                     Installed</div>
                 <div className="sidebar-user">
                     <div className="su-avatar">SR</div>
@@ -81,7 +121,7 @@ function Admin() {
                         <div className="su-role">Administrator</div>
                     </div>
                 </div>
-                <button className="btn-logout" onClick="logout()">🚪 Logout</button>
+                <button className="btn-logout">🚪 Logout</button>
             </div>
         </nav>
 
@@ -90,11 +130,11 @@ function Admin() {
 
             {/* <!-- TOPBAR --> */}
             <div className="topbar">
-                <button className="topbar-hamburger" onClick="openAdminSidebar()" title="Menu">☰</button>
+                <button className="topbar-hamburger"  title="Menu">☰</button>
                 <div className="topbar-title">⚡ <span>Shree Ram</span> Electric Works</div>
                 <div className="topbar-right">
-                    <button id="topInstallBtn" onClick="installPWA()" className="btn btn-orange btn-sm"
-                        style="display:none">📲 Install</button>
+                    <button id="topInstallBtn"  className="btn btn-orange btn-sm"
+                        style={{display:"none"}}>📲 Install</button>
                     <a href="/" className="view-site-btn">🌐 Catalogue</a>
                 </div>
             </div>
@@ -140,27 +180,27 @@ function Admin() {
                     <div className="table-toolbar">
                         <h3>⚡ All Motors</h3>
                         <input type="text" id="motorSearch" className="search-input" placeholder="Search motors..."
-                            oninput="filterMotors()" />
-                        <select id="typeFilter" className="sel-filter" onchange="filterMotors()">
+                             />
+                        <select id="typeFilter" className="sel-filter" >
                             <option value="">All Types</option>
                             <option value="AC">AC</option>
                             <option value="DC">DC</option>
                         </select>
-                        <select id="phaseFilter" className="sel-filter" onchange="filterMotors()">
+                        <select id="phaseFilter" className="sel-filter">
                             <option value="">All Phases</option>
                             <option value="Single">Single Phase</option>
                             <option value="Three">Three Phase</option>
                         </select>
-                        <button className="btn btn-orange" onClick="openAddModal()">➕ Add Motor</button>
+                        <button className="btn btn-orange" >➕ Add Motor</button>
                     </div>
                     <div className="table-scroll">
                         <table className="data-table">
                             <thead>
                                 <tr>
-                                    <th onClick="sortMotors('brand')">Brand ↕</th>
-                                    <th onClick="sortMotors('frameSize')">Frame ↕</th>
-                                    <th onClick="sortMotors('ratedPowerHP')">HP ↕</th>
-                                    <th onClick="sortMotors('ratedRPM')">RPM ↕</th>
+                                    <th>Brand ↕</th>
+                                    <th >Frame ↕</th>
+                                    <th >HP ↕</th>
+                                    <th >RPM ↕</th>
                                     <th>Voltage</th>
                                     <th>Type</th>
                                     <th>Phase</th>
@@ -193,7 +233,7 @@ function Admin() {
                             <div className="si-icon">🕐</div>
                             <div>
                                 <div className="si-title">Last Backup</div>
-                                <div className="si-val" id="lastBackupLabel" style="font-size:.8rem">Never</div>
+                                <div className="si-val" id="lastBackupLabel" style={{fontSize:".8rem"}}>Never</div>
                             </div>
                         </div>
                         <div className="safety-item">
@@ -210,90 +250,151 @@ function Admin() {
                         <div className="ec-icon">📄</div>
                         <h3>PDF Report</h3>
                         <p>Export all motors as a printable PDF report</p>
-                        <button className="btn btn-navy" onClick="exportAllPDF()">📄 Download PDF</button>
+                        <button className="btn btn-navy" >📄 Download PDF</button>
                     </div>
                     <div className="export-card">
                         <div className="ec-icon">📊</div>
                         <h3>CSV Export</h3>
                         <p>Spreadsheet-compatible format for Excel/Sheets</p>
-                        <button className="btn btn-green" onClick="exportCSV()">📊 Download CSV</button>
+                        <button className="btn btn-green" >📊 Download CSV</button>
                     </div>
                     <div className="export-card">
                         <div className="ec-icon">💾</div>
                         <h3>JSON Backup</h3>
                         <p>Full backup — restore your data anytime</p>
-                        <button className="btn btn-orange" onClick="exportJSON()">💾 Download JSON</button>
+                        <button className="btn btn-orange" >💾 Download JSON</button>
                     </div>
                     <div className="export-card">
                         <div className="ec-icon">🖨️</div>
                         <h3>Print Report</h3>
                         <p>Send directly to printer</p>
-                        <button className="btn btn-light" onClick="printReport()">🖨️ Print</button>
+                        <button className="btn btn-light" >🖨️ Print</button>
                     </div>
                     <div className="export-card">
                         <div className="ec-icon">📋</div>
                         <h3>Copy Table</h3>
                         <p>Copy as tab-separated text</p>
-                        <button className="btn btn-light" onClick="copyTable()">📋 Copy</button>
+                        <button className="btn btn-light" >📋 Copy</button>
                     </div>
                 </div>
-                <p style="font-size:.82rem;color:var(--muted);margin-top:4px">💡 <strong>Tip:</strong> Back up your JSON
-                    regularly. Last backup: <strong id="lastBackupDate">Never</strong></p>
-            </div>
+                <p
+  style={{
+    fontSize: ".82rem",
+    color: "var(--muted)",
+    marginTop: "4px"
+  }}
+>
+  💡 <strong>Tip:</strong> Back up your JSON regularly. Last backup:
+  <strong id="lastBackupDate">Never</strong>
+</p>
+</div>
 
-            {/* <!-- ===== IMPORT ===== --> */}
-            <div className="page-content" id="page-import">
-                <div className="table-card" style="max-width:600px">
-                    <div className="table-toolbar">
-                        <h3>📥 Import Motor Data</h3>
-                    </div>
-                    <div style="padding:22px 22px 24px">
-                        <div className="drop-zone" id="dropZone" ondragover="dzOver(event)" ondragleave="dzLeave()"
-                            ondrop="dzDrop(event)" onClick="document.getElementById('importFile').click()">
-                            <div className="dz-icon">📂</div>
-                            <p style="font-weight:700;color:var(--navy);margin-bottom:5px">Drop JSON file here or click
-                                to browse</p>
-                            <p style="font-size:.82rem;color:var(--muted)">Only .json backup files exported from this
-                                system</p>
-                        </div>
-                        <input type="file" id="importFile" accept=".json" style="display:none"
-                            onchange="handleImport(this)" />
-                        <div id="importPreview"></div>
-                    </div>
-                </div>
-            </div>
+{/* ===== IMPORT ===== */}
+<div className="page-content" id="page-import">
+  <div className="table-card" style={{ maxWidth: "600px" }}>
+    <div className="table-toolbar">
+      <h3>📥 Import Motor Data</h3>
+    </div>
+
+    <div style={{ padding: "22px 22px 24px" }}>
+      <div
+        className="drop-zone"
+        id="dropZone"
+       
+       
+      >
+        <div className="dz-icon">📂</div>
+
+        <p
+          style={{
+            fontWeight: 700,
+            color: "var(--navy)",
+            marginBottom: "5px"
+          }}
+        >
+          Drop JSON file here or click to browse
+        </p>
+
+        <p
+          style={{
+            fontSize: ".82rem",
+            color: "var(--muted)"
+          }}
+        >
+          Only .json backup files exported from this system
+        </p>
+      </div>
+
+      <input
+        type="file"
+        id="importFile"
+        accept=".json"
+        style={{ display: "none" }}
+        
+      />
+
+      <div id="importPreview"></div>
+    </div>
+  </div>
+</div>
 
             {/* <!-- ===== SETTINGS ===== --> */}
             <div className="page-content" id="page-settings">
                 <div className="settings-card">
                     <h3>🔐 Change Password</h3>
-                    <div className="fg" style="margin-bottom:12px">
+                    <div className="fg" style={{marginBottom:"12px"}}>
                         <label>Current Password</label>
                         <input type="password" id="curPass" placeholder="Current password" />
                     </div>
-                    <div className="fg" style="margin-bottom:12px">
+                    <div className="fg" style={{marginBottom:"12px"}}>
                         <label>New Password</label>
                         <input type="password" id="newPass" placeholder="Min 6 characters" />
                     </div>
-                    <div className="fg" style="margin-bottom:18px">
+                    <div className="fg" style={{marginBottom:"12px"}}>
                         <label>Confirm New Password</label>
                         <input type="password" id="conPass" placeholder="Repeat new password" />
                     </div>
-                    <button className="btn btn-orange" onClick="changePassword()">🔐 Change Password</button>
+                    <button className="btn btn-orange" >🔐 Change Password</button>
                 </div>
                 <div className="settings-card">
-                    <h3>🗑️ Danger Zone</h3>
-                    <p style="font-size:.86rem;color:var(--muted);margin-bottom:16px">Permanently delete all motor
-                        records. A JSON backup will be downloaded first.</p>
-                    <button className="btn btn-red" onClick="clearAllData()">🗑️ Clear All Data</button>
-                </div>
-                <div className="settings-card">
-                    <h3>📲 App Install</h3>
-                    <p style="font-size:.86rem;color:var(--muted);margin-bottom:16px">Install this admin panel as a PWA
-                        app on your device for offline access.</p>
-                    <button id="topInstallBtn2" onClick="installPWA()" className="btn-install">📲 Install App on
-                        Device</button>
-                </div>
+  <h3>🗑️ Danger Zone</h3>
+
+  <p
+    style={{
+      fontSize: ".86rem",
+      color: "var(--muted)",
+      marginBottom: "16px"
+    }}
+  >
+    Permanently delete all motor records. A JSON backup will be downloaded first.
+  </p>
+
+  <button className="btn btn-red" >
+    🗑️ Clear All Data
+  </button>
+</div>
+
+<div className="settings-card">
+  <h3>📲 App Install</h3>
+
+  <p
+    style={{
+      fontSize: ".86rem",
+      color: "var(--muted)",
+      marginBottom: "16px"
+    }}
+  >
+    Install this admin panel as a PWA app on your device for offline access.
+  </p>
+
+  <button
+    id="topInstallBtn2"
+   
+    className="btn-install"
+  >
+    📲 Install App on Device
+  </button>
+</div>
             </div>
 
             {/* <!-- ===== HELP ===== --> */}
@@ -349,11 +450,11 @@ function Admin() {
     {/* <!-- /appWrap --> */}
 
     {/* <!-- ===== ADD/EDIT MOTOR MODAL ===== --> */}
-    <div className="modal-bg" id="motorModal" style="display:none" onClick="closeMModalOutside(event)">
+    <div className="modal-bg" id="motorModal" style={{display:"none"}} >
         <div className="modal">
             <div className="modal-header">
                 <h2 id="mModalTitle">➕ Add New Motor</h2>
-                <button className="modal-close" onClick="closeMotorModal()">✕</button>
+                <button className="modal-close">✕</button>
             </div>
             <div className="modal-body">
 
@@ -375,7 +476,7 @@ function Admin() {
                         </div>
                         <div className="fg">
                             <label>Phase *</label>
-                            <select id="f_phase" onchange="onPhaseChange()">
+                            <select id="f_phase" >
                                 <option value="Single">Single Phase</option>
                                 <option value="Three">Three Phase</option>
                             </select>
@@ -389,10 +490,10 @@ function Admin() {
                         <div className="fg"><label>Rated RPM</label><input type="number" id="f_ratedRPM"
                                 placeholder="1440" /></div>
                         <div className="fg"><label>Rated Power (HP)</label><input type="number" id="f_ratedPowerHP"
-                                step="0.01" placeholder="e.g. 1.5" oninput="autoKW()" /></div>
+                                step="0.01" placeholder="e.g. 1.5" /></div>
                         <div className="fg"><label>Rated Power (kW) <small
-                                    style="font-weight:400">(auto)</small></label><input type="text" id="f_ratedPowerKW"
-                                placeholder="Auto-calculated" readonly style="background:#f8fafd" /></div>
+                                    style={{fontWeight:400}}>(auto)</small></label><input type="text" id="f_ratedPowerKW"
+                                placeholder="Auto-calculated" readOnly style={{background:"#f8fafd"}}/></div>
                         <div className="fg">
                             <label>Insulation className</label>
                             <select id="f_insulationclassName">
@@ -458,25 +559,53 @@ function Admin() {
                     </div>
 
                     {/* <!-- Turns per Pitch --> */}
-                    <div style="margin-top:16px">
-                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-                            <label
-                                style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px">🔢
-                                Turns per Pitch</label>
-                            <button type="button" className="btn btn-light btn-sm" onClick="addPitchRow()">➕ Add
-                                Pitch</button>
+                    <div style={{ marginTop: "16px" }}>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginBottom: "10px"
+    }}
+  >
+    <label
+      style={{
+        fontSize: ".72rem",
+        fontWeight: 700,
+        color: "var(--muted)",
+        textTransform: "uppercase",
+        letterSpacing: ".6px"
+      }}
+    >
+      🔢 Turns per Pitch
+    </label>
+
+    <button
+      type="button"
+      className="btn btn-light btn-sm"
+     
+    >
+      ➕ Add Pitch
+    </button>
+  </div>
+
+  <div
+    id="pitchTurnsContainer"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px"
+    }}
+  ></div>
                         </div>
-                        <div id="pitchTurnsContainer" style="display:flex;flex-direction:column;gap:10px"></div>
-                    </div>
-                </div>
 
                 {/* <!-- PHASE TOGGLE --> */}
                 <div className="form-section">
                     <div className="form-section-title"><span className="fs-icon">🔌</span> Phase-Specific Data</div>
                     <div className="phase-toggle">
-                        <button type="button" className="phase-btn active" id="phBtn1" onClick="setPhase('Single')">🔌
+                        <button type="button" className="phase-btn active" id="phBtn1">🔌
                             Single Phase</button>
-                        <button type="button" className="phase-btn" id="phBtn3" onClick="setPhase('Three')">⚡ Three
+                        <button type="button" className="phase-btn" id="phBtn3" >⚡ Three
                             Phase</button>
                     </div>
 
@@ -497,7 +626,7 @@ function Admin() {
                     </div>
 
                     {/* <!-- Three Phase --> */}
-                    <div id="threePhaseSection" style="display:none">
+                    <div id="threePhaseSection" style={{display:"none"}}>
                         <div className="form-grid">
                             <div className="fg"><label>Line Voltage</label><input type="text" id="f_lineVoltage"
                                     placeholder="e.g. 415V" /></div>
@@ -565,45 +694,52 @@ function Admin() {
             </div>
             {/* <!-- /modal-bo/dy --> */}
             <div className="modal-footer">
-                <button className="btn btn-light" onClick="closeMotorModal()">Cancel</button>
-                <button className="btn btn-orange" onClick="saveMotor()">💾 Save Motor</button>
+                <button className="btn btn-light" >Cancel</button>
+                <button className="btn btn-orange" >💾 Save Motor</button>
             </div>
         </div>
     </div>
+    </div>
 
     {/* <!-- DETAIL MODAL --> */}
-    <div className="modal-bg" id="detailModal" style="display:none" onClick="closeDetailOutside(event)">
+    <div className="modal-bg" id="detailModal" style={{display:"none"}}>
         <div className="modal">
             <div className="modal-header">
                 <h2 id="detailTitle">Motor Details</h2>
-                <button className="modal-close" onClick="closeDetail()">✕</button>
+                <button className="modal-close" >✕</button>
             </div>
             <div className="modal-body" id="detailBody"></div>
             <div className="modal-footer">
                 <button id="detailEditBtn" className="btn btn-orange">✏️ Edit</button>
                 <button id="detailPdfBtn" className="btn btn-navy">📄 PDF</button>
-                <button className="btn btn-light" onClick="closeDetail()">Close</button>
+                <button className="btn btn-light">Close</button>
             </div>
         </div>
     </div>
 
     {/* <!-- CONFIRM DELETE MODAL --> */}
-    <div className="modal-bg" id="confirmModal" style="display:none">
+    <div className="modal-bg" id="confirmModal"style={{display:"none"}}>
         <div className="confirm-box">
             <div className="cb-icon">🗑️</div>
             <h3>Delete Motor?</h3>
             <p id="confirmMsg">This motor will be permanently deleted.</p>
-            <p style="font-size:.8rem;color:var(--muted);margin-top:-14px;margin-bottom:22px">A backup will be
+            <p style={{
+  fontSize: ".8rem",
+  color: "var(--muted)",
+  marginTop: "-14px",
+  marginBottom: "22px"
+}}>A backup will be
                 auto-downloaded before deletion.</p>
             <div className="confirm-btns">
-                <button className="btn btn-light" onClick="closeConfirm()">Cancel</button>
-                <button className="btn btn-red" onClick="confirmDelete()">🗑️ Delete</button>
+                <button className="btn btn-light" >Cancel</button>
+                <button className="btn btn-red">🗑️ Delete</button>
             </div>
         </div>
     </div>
 
     {/* <!-- TOAST CONTAINER --> */}
-    <div className="toast-wrap" id="toastWrap"></div></>
+    <div className="toast-wrap" id="toastWrap"></div>
+    </>
   )
 }
 
