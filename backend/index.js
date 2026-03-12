@@ -23,7 +23,8 @@ app.use('/api', routes);
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ message: '⚡ Shree Ram Electric Works API is running.' });
+  s = req.socket.localAddress
+  res.json({ message: '⚡ Shree Ram Electric Works API is running.', s });
 });
 
 // 404 handler
@@ -38,6 +39,6 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT ,() => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
