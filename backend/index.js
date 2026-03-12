@@ -11,7 +11,7 @@ connectDB();
 console.log(process.env.ADMIN_PASSWORD)
 // Middleware
 app.use(cors({
-  origin: ['https://shreeram-electric.onrender.com','http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'],
+  origin: ['https://shreeram-electric.onrender.com/','http://localhost:5173/', 'http://localhost:3000/', 'http://127.0.0.1:5173/'],
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
