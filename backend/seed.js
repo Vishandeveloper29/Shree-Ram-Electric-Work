@@ -1,10 +1,11 @@
-
+require('dotenv').config({path:__dirname + "/.env"})
 const mongoose = require('mongoose');
 const Admin = require('./models/Admin');
 const Motor = require('./models/Motor');
 const bcrypt = require('bcryptjs');
-const seed = async (req , res , next) => {
-  
+const connectDB = require("./connection")
+const seed = async () => {
+   await connectDB()
 
   // Create admin
   const existing = await Admin.findOne({ email: process.env.ADMIN_EMAIL });
@@ -64,4 +65,5 @@ const seed = async (req , res , next) => {
   }
 
 };
-module.exports = seed
+
+seed()
